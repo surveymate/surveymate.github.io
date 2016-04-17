@@ -19,7 +19,22 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://dndw32r4edmw5.cloudfront.net/scrollbar.css">
   <link rel="stylesheet" href="http://dndw32r4edmw5.cloudfront.net/bootstrap-fileinput/css/fileinput.min.css">
-
+  <!-- <script>
+    function checkAccessToken(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+    }
+    var x = decodeURIComponent(checkAccessToken('access_token'));
+    if (x === "null" || x === "undefined" || x === null || x === undefined) {
+      window.location.href = 'http://surveymate.github.io/#/login';
+    }
+  </script> -->
 </head>
 <body>
 
@@ -41,6 +56,29 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="http://dndw32r4edmw5.cloudfront.net/bootstrap-fileinput/js/fileinput.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    function noBack()
+     {
+         window.history.forward()
+     }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+    window.onunload = function() { void (0) }
+</script>
+
+<!-- Include the PubNub Library -->
+<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+
+<!-- Instantiate PubNub -->
+<script type="text/javascript">
+
+    var Pubnub = PUBNUB.init({
+        publish_key: 'pub-c-ac049dfa-b211-47d2-bd58-d140c4faebae',
+        subscribe_key: 'sub-c-0da88b20-02a5-11e6-a492-02ee2ddab7fe'
+    });
+
+</script>
 
 <script src="bundle.js"></script></body>
 </html>
