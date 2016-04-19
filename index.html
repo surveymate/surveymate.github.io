@@ -25,6 +25,10 @@
     {
       console.log("resetting");
     }
+    else if (window.location.href.split("?")[0] == "http://localhost:8080/#/register")
+    {
+      console.log("registering");
+    }
     else {
       console.log("inside");
       function checkAccessToken(name) {
