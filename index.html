@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://dndw32r4edmw5.cloudfront.net/scrollbar.css">
   <link rel="stylesheet" href="http://dndw32r4edmw5.cloudfront.net/bootstrap-fileinput/css/fileinput.min.css">
-  <!-- <script>
+  <script>
     function checkAccessToken(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -30,11 +30,34 @@
             }
             return null;
     }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
     var x = decodeURIComponent(checkAccessToken('access_token'));
     if (x === "null" || x === "undefined" || x === null || x === undefined) {
       window.location.href = 'http://surveymate.github.io/#/login';
     }
-  </script> -->
+    else {
+      console.log("already logged in")
+      if(getCookie('type')=="user") {
+        window.location.href = 'http://surveymate.github.io/#/projects/' + getCookie('userId');
+      }
+      else if (getCookie('type')=="agent"){
+        window.location.href = 'http://surveymate.github.io/#/admin/' + getCookie('userId');
+      }
+    }
+  </script>
 </head>
 <body>
 
